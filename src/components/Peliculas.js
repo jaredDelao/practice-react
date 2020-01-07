@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import Pelicula from './Pelicula';
+import Sidebar from './Siderbar';
+import Slider from './Slider';
 
 
 class Peliculas extends Component {
@@ -41,49 +43,57 @@ class Peliculas extends Component {
 
     render() {
         return (
-            <div id="content" className="peliculas">
-                <h2 className="subheader">Peliculas</h2>
-                <p>Seleccion de las peliculas favoritas de {this.state.nombre}</p>
 
-                {/* crear componente peliculas */}
+            <React.Fragment>
 
-                <button onClick={this.cambiarTitulo}>Cambiar titulo</button>
+                <Slider title="Pelicuclas" size="slider-small" />
+                <div className="center">
+                    <div id="content" className="peliculas">
+                        <h2 className="subheader">Listado de Peliculas</h2>
+                        <p>Seleccion de las peliculas favoritas de {this.state.nombre}</p>
 
-                {/* Ejemplo de un condicional IF */}
-                {this.state.favorita != ''
-                    ? (
-                        <p className="favorita" style={{
-                            background: 'green',
-                            color: 'white',
-                            padding: '10px'
-                        }}>
-                            <strong>La pelicula favorita es: </strong>
-                            <span>{this.state.favorita}</span>
-                        </p>
-                    )
-                    : (<p>No hay pelicula favorita</p>)
+                        {/* crear componente peliculas */}
 
-                }
+                        <button onClick={this.cambiarTitulo}>Cambiar titulo</button>
 
-
-                <div id="articles" className="peliculas">
-
-                    {
-                        this.state.peliculas.map((pelicula, i) => {
-                            return (
-                                <Pelicula
-                                    key={i}
-                                    pelicula={pelicula}
-                                    marcarFavorita={this.favorita}
-                                    indice={i}
-                                />
+                        {/* Ejemplo de un condicional IF */}
+                        {this.state.favorita != ''
+                            ? (
+                                <p className="favorita" style={{
+                                    background: 'green',
+                                    color: 'white',
+                                    padding: '10px'
+                                }}>
+                                    <strong>La pelicula favorita es: </strong>
+                                    <span>{this.state.favorita}</span>
+                                </p>
                             )
-                        })
-                    }
+                            : (<p>No hay pelicula favorita</p>)
 
+                        }
+
+
+                        <div id="articles" className="peliculas">
+
+                            {
+                                this.state.peliculas.map((pelicula, i) => {
+                                    return (
+                                        <Pelicula
+                                            key={i}
+                                            pelicula={pelicula}
+                                            marcarFavorita={this.favorita}
+                                            indice={i}
+                                        />
+                                    )
+                                })
+                            }
+
+                        </div>
+
+                    </div>
+                    <Sidebar blog="false" />
                 </div>
-
-            </div>
+            </React.Fragment>
         )
     }
 }

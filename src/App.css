@@ -59,6 +59,10 @@ body {
   float: left;
 }
 
+.active {
+  border-bottom: 2px solid #3cb2d3;
+}
+
 #menu{
   width: 70%;
   float:right;
