@@ -40,17 +40,16 @@ class Formulario extends Component {
             user: user
         })
 
-        let returned = Object.entries(user).reduce((acc, v) => {
-            acc.push({ [v[0]] : v[1]  });
-            return acc;
-        }, [])
+        // let returned = Object.entries(user).reduce((acc, v) => {
+        //     acc.push({ [v[0]] : v[1]  });
+        //     return acc;
+        // }, [])
 
-        console.log(returned)
+        // console.log(returned)
 
     }
 
     render() {
-
 
 
         return (
@@ -62,10 +61,14 @@ class Formulario extends Component {
                         {/* Mostrar datos del formulario */}
 
                         <div id="user-data">
-                            {this.state.user.nombre && <p>Nombre: <strong>{this.state.user.nombre}</strong></p>}
-                            {this.state.user.apellidos && <p>Apellidos: <strong>{this.state.user.apellidos}</strong></p>}
-                            {this.state.user.bio && <p>bio: <strong>{this.state.user.bio}</strong></p>}
-                            {this.state.user.genero && <p>genero: <strong>{this.state.user.genero}</strong></p>}
+                            {this.state.user.nombre &&
+                                <p>Nombre: <strong>{this.state.user.nombre}</strong></p>}
+                            {this.state.user.apellidos &&
+                                <p>Apellidos: <strong>{this.state.user.apellidos}</strong></p>}
+                            {this.state.user.bio &&
+                                <p>bio: <strong>{this.state.user.bio}</strong></p>}
+                            {this.state.user.genero &&
+                                <p>genero: <strong>{this.state.user.genero}</strong></p>}
                         </div>
 
 

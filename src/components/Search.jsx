@@ -6,7 +6,7 @@ import Sidebar from './Siderbar';
 import Articles from './Articles';
 
 
-class Blog extends Component {
+class Search extends Component {
 
     state = {
         articles: {},
@@ -14,23 +14,23 @@ class Blog extends Component {
     }
 
     render() {
-
-        axios.get('http://localhost:3900/api/articles')
-            .then(resp => {
-                this.setState({
-                    articles: resp.data.articles,
-                    status: 'success'
-                });
-            });
+        // Parámetro que viene por url
+        var searched = this.props.match.params.search;
 
         return (
             <div id="blog">
-                <Slider title="Blog" size="slider-small" />
+                <Slider 
+                    title={'Búsqueda: '+searched} 
+                    size="slider-small" 
+                />
                 <div className="center">
                     <div id="content">
-                        {/* Listado de articulos desde API */}
 
-                        <Articles />
+                        {/* Listado de articulos desde API */}
+                        <Articles
+                            search={searched}     
+                        />
+
                     </div>
 
                     <Sidebar blog="true" />
@@ -40,4 +40,4 @@ class Blog extends Component {
     }
 }
 
-export default Blog;
+export default Search;
